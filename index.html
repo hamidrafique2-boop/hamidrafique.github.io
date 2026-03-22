@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags (Fix 5) -->
+    <meta name="description" content="Hamid Rafique — BS Cybersecurity Student at Air University Islamabad. Ethical hacking, vulnerability assessment, CTF player on HTB and TryHackMe.">
+    <meta name="keywords" content="Hamid Rafique, cybersecurity, portfolio, Air University, ethical hacking, penetration testing, Islamabad">
+    <meta name="author" content="Hamid Rafique">
+
+    <!-- Open Graph / Social Sharing (Fix 5) -->
+    <meta property="og:title" content="Hamid Rafique — Cybersecurity Portfolio">
+    <meta property="og:description" content="BS Cybersecurity Student | Ethical Hacker in Training | HTB & TryHackMe Player">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hamidrafique.github.io">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Hamid Rafique — Cybersecurity Portfolio">
+    <meta name="twitter:description" content="BS Cybersecurity Student | Ethical Hacker in Training | HTB & TryHackMe Player">
+
+    <title>Hamid Rafique — Cybersecurity Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ===== ANIMATED BACKGROUND CANVAS ===== -->
+    <canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" aria-label="Home — Hamid Rafique Portfolio">
+                <span class="logo-bracket">[</span>HR<span class="logo-bracket">]</span><span class="logo-cursor">_</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MOBILE NAV OVERLAY ===== -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main role="main">
+
+    <!-- ===== SECTION: HERO ===== -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <!-- Boot Sequence -->
+            <div class="boot-sequence" id="boot-sequence">
+                <div class="boot-line" data-delay="0"><span class="prompt-symbol">❯</span> Initializing secure connection...</div>
+                <div class="boot-line" data-delay="600"><span class="prompt-symbol">❯</span> Loading profile: hamid_rafique...</div>
+                <div class="boot-line" data-delay="1200"><span class="prompt-symbol">❯</span> Decrypting credentials... <span class="text-green">OK</span></div>
+                <div class="boot-line" data-delay="1800"><span class="prompt-symbol">❯</span> Access granted. <span class="text-cyan">Welcome.</span></div>
+            </div>
+
+            <!-- Main Hero Content (hidden until boot finishes) -->
+            <div class="hero-content" id="hero-content">
+                <h1 class="hero-name glitch-text" data-text="HAMID RAFIQUE">HAMID RAFIQUE</h1>
+                <div class="hero-typewriter">
+                    <span class="terminal-prompt">root@hamid:~$ </span>
+                    <span class="typewriter-text" id="typewriter-text"></span>
+                    <span class="typewriter-cursor">█</span>
+                </div>
+                <p class="hero-tagline">"Turning vulnerabilities into knowledge. One shell at a time."</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary" id="btn-view-projects">
+                        <i class="fa-solid fa-terminal" aria-hidden="true"></i> View Projects
+                    </a>
+                    <a href="./Hamid_Rafique_Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer" id="btn-download-cv">
+                        <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/hamidrafique" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub profile" data-tooltip="GitHub">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn profile" data-tooltip="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:hamidrafique2@gmail.com" class="social-icon" aria-label="Send email" data-tooltip="Email">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="scroll-indicator" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION: ABOUT ===== -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-heading glitch-heading" data-text="> whoami"><span class="heading-prompt">&gt; </span>whoami</h2>
+
+            <div class="about-grid">
+                <!-- Left Column — System Info Panel -->
+                <div class="system-info-panel" id="system-info-panel">
+                    <div class="panel-header">
+                        <span class="panel-dot red"></span>
+                        <span class="panel-dot yellow"></span>
+                        <span class="panel-dot green"></span>
+                        <span class="panel-title">system_info.sh</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="info-line" data-delay="0"><span class="info-key">NAME</span><span class="info-sep">:</span> <span class="info-value">Hamid Rafique</span></div>
+                        <div class="info-line" data-delay="100"><span class="info-key">ROLE</span><span class="info-sep">:</span> <span class="info-value">Cybersecurity Student</span></div>
+                        <div class="info-line" data-delay="200"><span class="info-key">LOCATION</span><span class="info-sep">:</span> <span class="info-value">Islamabad, Pakistan</span></div>
+                        <div class="info-line" data-delay="300"><span class="info-key">VARSITY</span><span class="info-sep">:</span> <span class="info-value">Air University</span></div>
+                        <div class="info-line" data-delay="400"><span class="info-key">SEMESTER</span><span class="info-sep">:</span> <span class="info-value">2nd (CGPA: 3.09)</span></div>
+                        <div class="info-line" data-delay="500"><span class="info-key">STATUS</span><span class="info-sep">:</span> <span class="info-value text-green">Available for Internships</span></div>
+                    </div>
+                </div>
+
+                <!-- Right Column — Bio -->
+                <div class="about-bio">
+                    <p>I'm a 2nd semester BS Cybersecurity student at Air University, Islamabad, with a passion for ethical hacking, vulnerability assessment, and building secure systems. I actively solve real-world challenges on Hack The Box and TryHackMe, hold 10+ industry certifications, and have hands-on experience with Kali Linux, Tenable Nessus, and penetration testing methodologies.</p>
+                    <p class="bio-highlight">I believe the best defenders think like attackers.</p>
+                </div>
+            </div>
+
+            <!-- Education Timeline -->
+            <div class="timeline">
+                <h3 class="timeline-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education</h3>
+                <div class="timeline-track">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">Sep 2025 – Oct 2029 (Expected)</span>
+                            <h4>BS Cybersecurity</h4>
+                            <p>Air University, Islamabad — Semester 2</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">Jan 2023 – Sep 2025</span>
+                            <h4>Intermediate ICS</h4>
+                            <p>Fazaia Inter College</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">Jan 2021 – Jan 2023</span>
+                            <h4>Matriculation</h4>
+                            <p>Fazaia Inter College</p>
+                        </div>
+                    </div>
+                    <!-- ===== ADD NEW EDUCATION ENTRY: Copy one .timeline-item block above and paste here ===== -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION: SKILLS ===== -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-heading glitch-heading" data-text="> skills --verbose"><span class="heading-prompt">&gt; </span>skills --verbose</h2>
+
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-card" data-accent="cyan">
+                    <div class="skill-card-header">
+                        <i class="fa-solid fa-code" aria-hidden="true"></i>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C++ (Intermediate)</span>
+                        <span class="skill-tag">Python (Fundamentals)</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript (Vanilla)</span>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity & Tools -->
+                <div class="skill-card" data-accent="green">
+                    <div class="skill-card-header">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        <h3>Cybersecurity & Tools</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                        <span class="skill-tag">Tenable Nessus</span>
+                        <span class="skill-tag">Ethical Hacking</span>
+                        <span class="skill-tag">Linux Security</span>
+                        <span class="skill-tag">Malware Analysis Concepts</span>
+                        <span class="skill-tag">Kali Linux</span>
+                        <span class="skill-tag">Metasploitable 2</span>
+                        <span class="skill-tag">Hack The Box</span>
+                        <span class="skill-tag">TryHackMe</span>
+                    </div>
+                </div>
+
+                <!-- DevOps & Version Control -->
+                <div class="skill-card" data-accent="orange">
+                    <div class="skill-card-header">
+                        <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
+                        <h3>DevOps & Version Control</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">GitHub Pages</span>
+                        <span class="skill-tag">Bash Scripting</span>
+                        <span class="skill-tag">Linux CLI</span>
+                        <span class="skill-tag">Windows CLI</span>
+                        <span class="skill-tag">VS Code</span>
+                    </div>
+                </div>
+
+                <!-- AI, Data & Web -->
+                <div class="skill-card" data-accent="purple">
+                    <div class="skill-card-header">
+                        <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                        <h3>AI, Data & Web</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI Fundamentals</span>
+                        <span class="skill-tag">Data Literacy</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">DOM Manipulation</span>
+                        <span class="skill-tag">Local Storage API</span>
+                        <span class="skill-tag">ISO/IEC 27001:2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION: PROJECTS ===== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-heading glitch-heading" data-text="> ls -la ./projects"><span class="heading-prompt">&gt; </span>ls -la ./projects</h2>
+
+            <div class="projects-grid">
+                <!-- Project 1: ICT Quiz Website -->
+                <div class="project-card magnetic-card" data-accent="cyan">
+                    <div class="card-accent-border"></div>
+                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+                    <div class="project-card-body">
+                        <h3 class="project-title">ICT Quiz Website</h3>
+                        <div class="project-meta">
+                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
+                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — ICT</span>
+                        </div>
+                        <div class="project-summary">
+                            <p>Responsive quiz platform with 6 subject-based timed quizzes. Real-time countdown timer, auto-scoring, instant feedback, localStorage history, dark/light toggle.</p>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Built 6 subject-based quizzes with randomized question pools</li>
+                                <li>Implemented real-time countdown timer with auto-submit</li>
+                                <li>Auto-scoring engine with instant visual feedback per question</li>
+                                <li>Persistent quiz history using the localStorage API</li>
+                                <li>Dark/light theme toggle with CSS custom properties</li>
+                                <li>Fully responsive — deployed on GitHub Pages</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">GitHub Pages</span>
+                        </div>
+                        <button class="btn-expand" aria-label="Toggle project details">
+                            <span class="expand-text">View Details</span>
+                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Persistence Mechanism Simulator -->
+                <div class="project-card magnetic-card" data-accent="green">
+                    <div class="card-accent-border"></div>
+                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-virus"></i></div>
+                    <div class="project-card-body">
+                        <h3 class="project-title">Persistence Mechanism Simulator</h3>
+                        <div class="project-meta">
+                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
+                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — PF</span>
+                        </div>
+                        <div class="project-summary">
+                            <p>Educational C++ program simulating how malware persistence mechanisms work in a safe academic environment.</p>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Simulates repeated execution and state retention mechanisms</li>
+                                <li>Demonstrates file handling and control flow for persistence</li>
+                                <li>Educational tool for understanding defensive cybersecurity</li>
+                                <li>Documents how real-world malware maintains access</li>
+                                <li>Built in a safe, sandboxed academic environment</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">C++</span>
+                            <span class="project-tag">File Handling</span>
+                            <span class="project-tag">Control Structures</span>
+                            <span class="project-tag">Cybersecurity</span>
+                            <span class="project-tag">Windows API</span>
+                        </div>
+                        <button class="btn-expand" aria-label="Toggle project details">
+                            <span class="expand-text">View Details</span>
+                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Security Analysis with Nessus -->
+                <div class="project-card magnetic-card" data-accent="orange">
+                    <div class="card-accent-border"></div>
+                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-bug"></i></div>
+                    <div class="project-card-body">
+                        <h3 class="project-title">Security Analysis of Metasploitable 2</h3>
+                        <div class="project-meta">
+                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
+                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — Intro to CS</span>
+                        </div>
+                        <div class="project-summary">
+                            <p>Full pentest lab using Kali Linux + Nessus Essentials + Metasploitable 2. Identified and remediated multiple vulnerability categories.</p>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Set up complete penetration testing lab environment</li>
+                                <li>Used Tenable Nessus Essentials for vulnerability scanning</li>
+                                <li>Identified Critical, High, Medium, and Low severity vulnerabilities</li>
+                                <li>Discovered exploitable services: Telnet, VSFTPD 2.3.4, NFS</li>
+                                <li>Ethically exploited vulnerabilities and documented remediation</li>
+                                <li>Verified fixes through re-scanning and validation</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Nessus</span>
+                            <span class="project-tag">Vulnerability Assessment</span>
+                            <span class="project-tag">Linux Security</span>
+                            <span class="project-tag">Ethical Hacking</span>
+                            <span class="project-tag">Remediation</span>
+                        </div>
+                        <button class="btn-expand" aria-label="Toggle project details">
+                            <span class="expand-text">View Details</span>
+                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== ADD NEW PROJECT: Copy one .project-card block above and paste here ===== -->
+                <!--
+                <div class="project-card magnetic-card" data-accent="cyan">
+                    <div class="card-accent-border"></div>
+                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+                    <div class="project-card-body">
+                        <h3 class="project-title">Project Title</h3>
+                        <div class="project-meta">
+                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Date Range</span>
+                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Institution — Course</span>
+                        </div>
+                        <div class="project-summary">
+                            <p>Short summary of the project.</p>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Detail 1</li>
+                                <li>Detail 2</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Skill1</span>
+                            <span class="project-tag">Skill2</span>
+                        </div>
+                        <button class="btn-expand" aria-label="Toggle project details">
+                            <span class="expand-text">View Details</span>
+                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION: CERTIFICATIONS ===== -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-heading glitch-heading" data-text="> certifications --verified"><span class="heading-prompt">&gt; </span>certifications --verified</h2>
+
+            <!-- Filter Buttons -->
+            <div class="cert-filters">
+                <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+                <button class="filter-btn" data-filter="datacamp" id="filter-datacamp">DataCamp</button>
+                <button class="filter-btn" data-filter="security" id="filter-security">Security</button>
+            </div>
+
+            <div class="cert-grid" id="cert-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">AI Fundamentals</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/ai-fundamentals.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-ai-fundamentals">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Data Literacy</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/data-literacy.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-data-literacy">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">GitHub Foundations</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/github-foundations.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-github-foundations">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Introduction to GitHub Concepts</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/github-concepts.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-github-concepts">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Intermediate Git</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/intermediate-git.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intermediate-git">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Introduction to Git</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/intro-git.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intro-git">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 7 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Introduction to Python</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/intro-python.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intro-python">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 8 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Intermediate ChatGPT</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/intermediate-chatgpt.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intermediate-chatgpt">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 9 -->
+                <div class="cert-card magnetic-card" data-filter="datacamp">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="cert-name">Introduction to Bash Scripting</h4>
+                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/bash-scripting.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-bash-scripting">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 10 -->
+                <div class="cert-card magnetic-card" data-filter="security">
+                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4 class="cert-name">ISO/IEC 27001:2022 Information Security Associate™</h4>
+                    <span class="cert-issuer issuer-security">SkillFront</span>
+                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Dec 2025</span>
+                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
+                    <a href="./certificates/iso-27001.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-iso-27001">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- ===== ADD NEW CERTIFICATION: Copy one .cert-card block above, update name/issuer/date/data-filter/href ===== -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION: CONTACT ===== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-heading glitch-heading" data-text="> contact --init"><span class="heading-prompt">&gt; </span>contact --init</h2>
+
+            <div class="contact-grid">
+                <div class="contact-card" id="contact-email">
+                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></div>
+                    <h4>Email</h4>
+                    <a href="mailto:hamidrafique2@gmail.com" class="contact-info">hamidrafique2@gmail.com</a>
+                    <button class="copy-btn" data-copy="hamidrafique2@gmail.com" aria-label="Copy email address">
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                        <span class="copy-tooltip">Copied!</span>
+                    </button>
+                </div>
+                <div class="contact-card" id="contact-phone">
+                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+                    <h4>Phone</h4>
+                    <a href="tel:+923312224628" class="contact-info">+92 331 222 4628</a>
+                    <button class="copy-btn" data-copy="+923312224628" aria-label="Copy phone number">
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                        <span class="copy-tooltip">Copied!</span>
+                    </button>
+                </div>
+                <div class="contact-card" id="contact-linkedin">
+                    <div class="contact-icon" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="contact-info">linkedin.com/in/hamid-rafique</a>
+                    <button class="copy-btn" data-copy="https://www.linkedin.com/in/hamid-rafique-299006381" aria-label="Copy LinkedIn URL">
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                        <span class="copy-tooltip">Copied!</span>
+                    </button>
+                </div>
+                <div class="contact-card" id="contact-location">
+                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4>Location</h4>
+                    <span class="contact-info">Islamabad, Pakistan</span>
+                </div>
+            </div>
+
+            <div class="contact-socials">
+                <a href="https://github.com/hamidrafique" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub profile" id="social-github">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn profile" id="social-linkedin">
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:hamidrafique2@gmail.com" class="social-btn" aria-label="Send email" id="social-email">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ===== SECTION: FOOTER ===== -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p><span id="copyright-year"></span></p>
+            </div>
+            <div class="footer-center">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certs</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-right">
+                <p>"Built with passion. Secured with knowledge."</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
