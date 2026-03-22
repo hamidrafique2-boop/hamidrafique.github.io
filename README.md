@@ -2,7 +2,7 @@
 
 > "Turning vulnerabilities into knowledge. One shell at a time."
 
-Live site: https://hamidrafique.github.io
+Live site: https://hamidrafique2-boop.github.io/hamidrafique.github.io/
 
 ---
 
