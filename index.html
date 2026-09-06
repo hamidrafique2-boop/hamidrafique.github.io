@@ -3,780 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Meta Tags (Fix 5) -->
-    <meta name="description" content="Hamid Rafique — BS Cybersecurity Student at Air University's NCSA, Islamabad. Blue team / SOC aspirant, competitive CTF player, and builder of Fractured Signal, a custom CTF platform used by 94+ students.">
-    <meta name="keywords" content="Hamid Rafique, cybersecurity, SOC analyst, blue team, portfolio, Air University, CTF, ethical hacking, penetration testing, Islamabad">
-    <meta name="author" content="Hamid Rafique">
-
-    <!-- Open Graph / Social Sharing (Fix 5) -->
-    <meta property="og:title" content="Hamid Rafique — Cybersecurity Portfolio">
-    <meta property="og:description" content="Blue Team / SOC Aspirant | Competitive CTF Player | Builder of Fractured Signal">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hamidrafique.github.io">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hamid Rafique — Cybersecurity Portfolio">
-    <meta name="twitter:description" content="Blue Team / SOC Aspirant | Competitive CTF Player | Builder of Fractured Signal">
-
     <title>Hamid Rafique — Cybersecurity Portfolio</title>
-
-    <!-- Google Fonts -->
+    <meta name="description" content="Hamid Rafique — BS Cybersecurity student at Air University's NCSA, Islamabad. Blue team / SOC aspirant, competitive CTF player, and builder of Fractured Signal.">
+    
+    <!-- Fonts: Outfit for Display, Inter for Body, JetBrains Mono for Technical Data -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Stylesheet -->
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP for scroll-triggered animation (No Build Step) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Lenis for smooth scroll (No Build Step) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js" defer></script>
 </head>
-<body>
+<body class="theme-dark">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor" aria-hidden="true"></div>
 
-    <!-- ===== SCROLL PROGRESS BAR ===== -->
-    <div id="scroll-progress" aria-hidden="true"></div>
+    <!-- Accessibility Skip Link -->
+    <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- ===== ANIMATED BACKGROUND CANVAS ===== -->
-    <canvas id="neural-canvas" aria-hidden="true"></canvas>
+    <!-- Signal Line Canvas for idle-guarded performant spine animation -->
+    <canvas id="signal-canvas" class="signal-canvas" aria-hidden="true"></canvas>
 
-    <!-- ===== NAVIGATION BAR ===== -->
-    <nav id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo" aria-label="Home — Hamid Rafique Portfolio">
-                <span class="logo-bracket">[</span>HR<span class="logo-bracket">]</span><span class="logo-cursor">_</span>
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <a href="#top" class="brand" aria-label="Hamid Rafique Home">
+                <svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M4 16 L12 16 L16 8 L24 24 L28 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+                <span class="brand-text">H.Rafique</span>
             </a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-                <li><a href="#ctf" class="nav-link" data-section="ctf">CTF</a></li>
-                <li><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+            <nav class="main-nav" aria-label="Primary Navigation">
+                <a href="#about" class="nav-link" data-cursor="hover">About</a>
+                <a href="#capabilities" class="nav-link" data-cursor="hover">Capabilities</a>
+                <a href="#fractured-signal" class="nav-link" data-cursor="hover">Flagship</a>
+                <a href="#experience" class="nav-link" data-cursor="hover">Experience</a>
+                <a href="#contact" class="nav-link btn-nav" data-cursor="hover">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false" data-cursor="hover">
+                <span class="bar"></span>
+                <span class="bar"></span>
             </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- ===== MOBILE NAV OVERLAY ===== -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
-        <ul class="mobile-nav-links">
-            <li><a href="#about" class="mobile-nav-link">About</a></li>
-            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
-            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-            <li><a href="#ctf" class="mobile-nav-link">CTF</a></li>
-            <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
-            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-        </ul>
+        <nav class="mobile-nav">
+             <a href="#about">About</a>
+             <a href="#capabilities">Capabilities</a>
+             <a href="#fractured-signal">Flagship</a>
+             <a href="#experience">Experience</a>
+             <a href="#contact">Contact</a>
+        </nav>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main role="main">
-
-    <!-- ===== SECTION: HERO ===== -->
-    <section id="hero" class="hero-section">
-        <div class="hero-container">
-            <!-- Boot Sequence -->
-            <div class="boot-sequence" id="boot-sequence">
-                <div class="boot-line" data-delay="0"><span class="prompt-symbol">❯</span> Initializing secure connection...</div>
-                <div class="boot-line" data-delay="600"><span class="prompt-symbol">❯</span> Loading profile: hamid_rafique...</div>
-                <div class="boot-line" data-delay="1200"><span class="prompt-symbol">❯</span> Decrypting credentials... <span class="text-green">OK</span></div>
-                <div class="boot-line" data-delay="1800"><span class="prompt-symbol">❯</span> Access granted. <span class="text-cyan">Welcome.</span></div>
-            </div>
-
-            <!-- Main Hero Content (hidden until boot finishes) -->
-            <div class="hero-content" id="hero-content">
-                <h1 class="hero-name glitch-text" data-text="HAMID RAFIQUE">HAMID RAFIQUE</h1>
-                <div class="hero-typewriter">
-                    <span class="terminal-prompt">root@hamid:~$ </span>
-                    <span class="typewriter-text" id="typewriter-text"></span>
-                    <span class="typewriter-cursor">█</span>
-                </div>
-                <p class="hero-tagline">"Turning vulnerabilities into knowledge. One shell at a time."</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary" id="btn-view-projects">
-                        <i class="fa-solid fa-terminal" aria-hidden="true"></i> View Projects
-                    </a>
-                    <a href="./Hamid_Rafique_Resume.pdf?v=20260902" class="btn btn-outline" target="_blank" rel="noopener noreferrer" id="btn-download-cv">
-                        <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
-                    </a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/hamidrafique2-boop" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub profile" data-tooltip="GitHub">
-                        <i class="fa-brands fa-github" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn profile" data-tooltip="LinkedIn">
-                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-                    </a>
-                    <a href="mailto:hamidrafique2@gmail.com" class="social-icon" aria-label="Send email" data-tooltip="Email">
-                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="scroll-indicator" aria-hidden="true">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION: ABOUT ===== -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> whoami"><span class="heading-prompt">&gt; </span>whoami</h2>
-
-            <div class="about-grid">
-                <!-- Left Column — System Info Panel -->
-                <div class="system-info-panel" id="system-info-panel">
-                    <div class="panel-header">
-                        <span class="panel-dot red"></span>
-                        <span class="panel-dot yellow"></span>
-                        <span class="panel-dot green"></span>
-                        <span class="panel-title">system_info.sh</span>
+    <main id="main">
+        <!-- HERO -->
+        <section class="section hero-section" id="top">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="status-badge gs-reveal">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Islamabad, PK &mdash; Open to remote & on-site</span>
                     </div>
-                    <div class="panel-body">
-                        <div class="info-line" data-delay="0"><span class="info-key">NAME</span><span class="info-sep">:</span> <span class="info-value">Hamid Rafique</span></div>
-                        <div class="info-line" data-delay="100"><span class="info-key">ROLE</span><span class="info-sep">:</span> <span class="info-value">Blue Team / SOC Aspirant · Competitive CTF Player</span></div>
-                        <div class="info-line" data-delay="200"><span class="info-key">LOCATION</span><span class="info-sep">:</span> <span class="info-value">Islamabad, Pakistan</span></div>
-                        <div class="info-line" data-delay="300"><span class="info-key">VARSITY</span><span class="info-sep">:</span> <span class="info-value">Air University (NCSA)</span></div>
-                        <div class="info-line" data-delay="400"><span class="info-key">SEMESTER</span><span class="info-sep">:</span> <span class="info-value">3rd (CGPA: 3.15/4.0)</span></div>
-                        <div class="info-line" data-delay="500"><span class="info-key">STATUS</span><span class="info-sep">:</span> <span class="info-value text-green">Available for Internships</span></div>
-                        <div class="info-line" data-delay="600"><span class="info-key">EMAIL</span><span class="info-sep">:</span> <span class="info-value">hamidrafique2@gmail.com</span></div>
+                    
+                    <h1 class="hero-title gs-reveal gs-stagger">
+                        I study how systems <span class="text-accent">break</span><br>
+                        so I can build the ones that <span class="text-accent">notice.</span>
+                    </h1>
+                    
+                    <p class="hero-description gs-reveal gs-stagger">
+                        Hamid Rafique <span class="alias">(alias Cindrix)</span>. BS Cybersecurity student at Air University's NCSA. 
+                        Focusing on blue team and SOC analysis, sharpened by competitive offensive CTF play.
+                    </p>
+
+                    <div class="hero-actions gs-reveal gs-stagger">
+                        <a href="#fractured-signal" class="btn btn-primary" data-cursor="hover">View Flagship Project</a>
+                        <a href="Hamid_Rafique_Resume.pdf" target="_blank" class="btn btn-secondary" data-cursor="hover">
+                            <i class="fa-solid fa-file-pdf"></i> Resume
+                        </a>
                     </div>
                 </div>
 
-                <!-- Right Column — Bio -->
-                <div class="about-bio">
-                    <p>I'm a 3rd semester BS Cybersecurity student at Air University's National Cyber Security Academy, building toward blue team and SOC analyst work while staying sharp offensively through competitive CTF play. I designed and shipped <strong>Fractured Signal</strong>, a custom CTF platform used by ~94 students, co-authored a research paper on Windows persistence attacks, and I'm working through a 10-project self-directed SOC detection portfolio.</p>
-                    <p class="bio-highlight">I believe the best defenders think like attackers.</p>
+                <div class="hero-stats-strip gs-reveal">
+                    <div class="stat-block">
+                        <span class="stat-number">94</span>
+                        <span class="stat-label">Students on custom CTF platform</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-number">6th</span>
+                        <span class="stat-label">Place, Hack4Bug 2026</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Project SOC portfolio (In progress)</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Co-authored research paper</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Education Timeline -->
-            <div class="timeline">
-                <h3 class="timeline-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education</h3>
-                <div class="timeline-track">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <span class="timeline-date">Sep 2025 – Oct 2029 (Expected)</span>
-                            <h4>BS Cyber Security</h4>
-                            <p>Air University (NCSA), Islamabad — 3rd Semester · CGPA 3.15/4.0</p>
-                            <p>2nd Sem GPA: 3.22</p>
+        <!-- ABOUT -->
+        <section class="section about-section" id="about">
+            <div class="container grid-layout">
+                <div class="section-header col-4 gs-reveal">
+                    <span class="kicker">01 // Identity</span>
+                    <h2>Defense starts with understanding offense.</h2>
+                </div>
+                <div class="section-content col-8 gs-reveal">
+                    <p class="lead-text">
+                        I'm a 3rd semester BS Cybersecurity student at Air University's National Cyber Security Academy (CGPA 3.15/4.0), building toward blue team and SOC analyst work. 
+                    </p>
+                    <p>
+                        Most of my hands-on learning happens sideways — through competitive CTF play across web exploitation, reverse engineering, cryptography, and binary exploitation. That offensive practice feeds directly back into how I think defensively.
+                    </p>
+                    <p>
+                        I designed and shipped <strong>Fractured Signal</strong>, a custom CTF platform now used by roughly 94 students at my university, co-authored a research paper on Windows persistence and resource-exhaustion attacks, and I'm currently working through a self-directed, ten-project SOC detection portfolio covering brute-force detection, log-based IDS, and SIEM web-attack analysis.
+                    </p>
+                    
+                    <div class="data-grid mt-4">
+                        <div class="data-item">
+                            <span class="data-key">Education</span>
+                            <span class="data-value">BS Cyber Security, Air University (NCSA)</span>
+                            <span class="data-sub">Sep 2025 – Oct 2029 (Exp) · CGPA 3.15/4.0</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-key">Focus</span>
+                            <span class="data-value">Blue Team / SOC Analysis</span>
+                            <span class="data-sub">Active CTF practice as Cindrix</span>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <span class="timeline-date">Jan 2023 – Sep 2025</span>
-                            <h4>Intermediate ICS</h4>
-                            <p>Fazaia Inter College</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <span class="timeline-date">Jan 2021 – Jan 2023</span>
-                            <h4>Matriculation</h4>
-                            <p>Fazaia Inter College</p>
-                        </div>
-                    </div>
-                    <!-- ===== ADD NEW EDUCATION ENTRY: Copy one .timeline-item block above and paste here ===== -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== SECTION: SKILLS ===== -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> skills --verbose"><span class="heading-prompt">&gt; </span>skills --verbose</h2>
-
-            <div class="skills-grid">
-                <!-- Programming Languages -->
-                <div class="skill-card" data-accent="cyan">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-code" aria-hidden="true"></i>
-                        <h3>Programming Languages</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C++ (Intermediate)</span>
-                        <span class="skill-tag">Python (Fundamentals)</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript (Vanilla)</span>
-                    </div>
+        <!-- CAPABILITIES -->
+        <section class="section capabilities-section" id="capabilities">
+            <div class="container">
+                <div class="section-header text-center gs-reveal">
+                    <span class="kicker">02 // Capabilities</span>
+                    <h2>Two sides of the same discipline.</h2>
                 </div>
-
-                <!-- Offensive Security -->
-                <div class="skill-card" data-accent="green">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-user-ninja" aria-hidden="true"></i>
-                        <h3>Offensive</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Web Exploitation</span>
-                        <span class="skill-tag">SQLi</span>
-                        <span class="skill-tag">SSTI</span>
-                        <span class="skill-tag">Buffer Overflow / ret2win</span>
-                        <span class="skill-tag">Reverse Engineering</span>
-                        <span class="skill-tag">Weak ECDSA/RSA Attacks</span>
-                    </div>
-                </div>
-
-                <!-- Defensive Security -->
-                <div class="skill-card" data-accent="cyan">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                
+                <div class="bento-grid mt-5">
+                    <div class="bento-card col-span-2 gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
                         <h3>Defensive</h3>
+                        <ul class="tag-list">
+                            <li>SIEM Fundamentals</li>
+                            <li>Incident Response Workflows</li>
+                            <li>NIST RMF</li>
+                            <li>Log-Based Detection</li>
+                            <li>Vulnerability Assessment</li>
+                            <li>Malware Persistence Analysis</li>
+                        </ul>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SIEM Fundamentals</span>
-                        <span class="skill-tag">IR Workflows</span>
-                        <span class="skill-tag">NIST RMF</span>
-                        <span class="skill-tag">Log-Based Detection</span>
-                        <span class="skill-tag">Vulnerability Assessment</span>
-                        <span class="skill-tag">Tenable Nessus</span>
-                        <span class="skill-tag">Malware Analysis Concepts</span>
+                    
+                    <div class="bento-card col-span-2 gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="card-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                        <h3>Offensive</h3>
+                        <ul class="tag-list">
+                            <li>Web Exploitation</li>
+                            <li>SQL Injection</li>
+                            <li>SSTI</li>
+                            <li>Buffer Overflow / ret2win</li>
+                            <li>Reverse Engineering</li>
+                            <li>Weak ECDSA/RSA Attacks</li>
+                        </ul>
                     </div>
-                </div>
 
-                <!-- Tooling -->
-                <div class="skill-card" data-accent="orange">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-toolbox" aria-hidden="true"></i>
+                    <div class="bento-card col-span-1 gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="card-icon"><i class="fa-solid fa-toolbox"></i></div>
                         <h3>Tooling</h3>
+                        <ul class="tag-list small">
+                            <li>Burp Suite</li>
+                            <li>Metasploit</li>
+                            <li>Nmap</li>
+                            <li>Wireshark</li>
+                            <li>Splunk/ELK</li>
+                            <li>gdb</li>
+                            <li>pwntools</li>
+                            <li>Kali Linux</li>
+                        </ul>
                     </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Burp Suite</span>
-                        <span class="skill-tag">Metasploit</span>
-                        <span class="skill-tag">Nmap</span>
-                        <span class="skill-tag">Wireshark</span>
-                        <span class="skill-tag">Splunk/ELK</span>
-                        <span class="skill-tag">gdb</span>
-                        <span class="skill-tag">pwntools</span>
-                        <span class="skill-tag">Kali Linux</span>
-                        <span class="skill-tag">Metasploitable 2</span>
-                        <span class="skill-tag">Hack The Box</span>
-                        <span class="skill-tag">TryHackMe</span>
-                    </div>
-                </div>
-
-                <!-- DevOps & Version Control -->
-                <div class="skill-card" data-accent="orange">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
-                        <h3>DevOps & Version Control</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">GitHub Pages</span>
-                        <span class="skill-tag">Bash Scripting</span>
-                        <span class="skill-tag">Linux CLI</span>
-                        <span class="skill-tag">Windows CLI</span>
-                        <span class="skill-tag">VS Code</span>
-                    </div>
-                </div>
-
-                <!-- AI, Data & Web -->
-                <div class="skill-card" data-accent="purple">
-                    <div class="skill-card-header">
-                        <i class="fa-solid fa-brain" aria-hidden="true"></i>
-                        <h3>AI, Data & Web</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AI Fundamentals</span>
-                        <span class="skill-tag">Data Literacy</span>
-                        <span class="skill-tag">Prompt Engineering</span>
-                        <span class="skill-tag">Responsive Design</span>
-                        <span class="skill-tag">DOM Manipulation</span>
-                        <span class="skill-tag">Local Storage API</span>
-                        <span class="skill-tag">ISO/IEC 27001:2022</span>
+                    
+                    <div class="bento-card col-span-1 gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                        <h3>Languages</h3>
+                        <ul class="tag-list small">
+                            <li>Python</li>
+                            <li>C++ (OOP)</li>
+                            <li>Bash</li>
+                            <li>JavaScript/HTML/CSS</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== SECTION: PROJECTS ===== -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> ls -la ./projects"><span class="heading-prompt">&gt; </span>ls -la ./projects</h2>
-
-            <div class="projects-grid">
-                <!-- Flagship Project: Fractured Signal -->
-                <div class="project-card magnetic-card" data-accent="purple">
-                    <div class="card-accent-border"></div>
-                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-flag"></i></div>
-                    <div class="project-card-body">
-                        <h3 class="project-title">Fractured Signal — Custom CTF Platform</h3>
-                        <div class="project-meta">
-                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> 2025 – Present</span>
-                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University</span>
+        <!-- FLAGSHIP: FRACTURED SIGNAL -->
+        <section class="section flagship-section" id="fractured-signal">
+            <div class="container">
+                <div class="flagship-wrapper gs-reveal">
+                    <div class="flagship-content">
+                        <span class="kicker">03 // Flagship Build</span>
+                        <h2 class="massive-title">Fractured<br>Signal</h2>
+                        <p class="lead-text mt-3">A custom CTF platform, built from scratch for my own university.</p>
+                        <p class="mt-2 text-muted-light">
+                            Designed and deployed a full capture-the-flag platform used by roughly 94 Air University students to practice offensive security skills in a controlled environment. Built a student whitelist registration system on a Firebase backend, hosted and continuously delivered via GitHub Pages.
+                        </p>
+                        
+                        <div class="tech-stack-row mt-4">
+                            <span class="tech-tag"><i class="fa-solid fa-fire"></i> Firebase</span>
+                            <span class="tech-tag"><i class="fa-brands fa-github"></i> GitHub Pages</span>
+                            <span class="tech-tag"><i class="fa-solid fa-users"></i> Whitelist Auth</span>
                         </div>
-                        <div class="project-summary">
-                            <p>Designed and deployed a full CTF platform used by roughly 94 Air University students to practice offensive security skills in a controlled environment.</p>
-                        </div>
-                        <div class="project-details">
-                            <ul>
-                                <li>Designed and deployed a full CTF platform used by ~94 Air University students</li>
-                                <li>Built a student whitelist registration system on a Firebase backend</li>
-                                <li>Hosted and continuously delivered via GitHub Pages</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="project-tag">Firebase</span>
-                            <span class="project-tag">GitHub Pages</span>
-                            <span class="project-tag">Student Whitelist Auth</span>
-                        </div>
-                        <button class="btn-expand" aria-label="Toggle project details">
-                            <span class="expand-text">View Details</span>
-                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
-                        </button>
                     </div>
-                </div>
-
-                <!-- Project 1: ICT Quiz Website -->
-                <div class="project-card magnetic-card" data-accent="cyan">
-                    <div class="card-accent-border"></div>
-                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
-                    <div class="project-card-body">
-                        <h3 class="project-title">ICT Quiz Website</h3>
-                        <div class="project-meta">
-                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
-                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — ICT</span>
-                        </div>
-                        <div class="project-summary">
-                            <p>Responsive quiz platform with 6 subject-based timed quizzes. Real-time countdown timer, auto-scoring, instant feedback, localStorage history, dark/light toggle.</p>
-                        </div>
-                        <div class="project-details">
-                            <ul>
-                                <li>Built 6 subject-based quizzes with randomized question pools</li>
-                                <li>Implemented real-time countdown timer with auto-submit</li>
-                                <li>Auto-scoring engine with instant visual feedback per question</li>
-                                <li>Persistent quiz history using the localStorage API</li>
-                                <li>Dark/light theme toggle with CSS custom properties</li>
-                                <li>Fully responsive — deployed on GitHub Pages</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML5</span>
-                            <span class="project-tag">CSS3</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">GitHub Pages</span>
-                        </div>
-                        <button class="btn-expand" aria-label="Toggle project details">
-                            <span class="expand-text">View Details</span>
-                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 2: Persistence Mechanism Simulator -->
-                <div class="project-card magnetic-card" data-accent="green">
-                    <div class="card-accent-border"></div>
-                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-virus"></i></div>
-                    <div class="project-card-body">
-                        <h3 class="project-title">Persistence Mechanism Simulator</h3>
-                        <div class="project-meta">
-                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
-                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — PF</span>
-                        </div>
-                        <div class="project-summary">
-                            <p>Educational C++ program simulating how malware persistence mechanisms work in a safe academic environment.</p>
-                        </div>
-                        <div class="project-details">
-                            <ul>
-                                <li>Simulates repeated execution and state retention mechanisms</li>
-                                <li>Demonstrates file handling and control flow for persistence</li>
-                                <li>Educational tool for understanding defensive cybersecurity</li>
-                                <li>Documents how real-world malware maintains access</li>
-                                <li>Built in a safe, sandboxed academic environment</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">File Handling</span>
-                            <span class="project-tag">Control Structures</span>
-                            <span class="project-tag">Cybersecurity</span>
-                            <span class="project-tag">Windows API</span>
-                        </div>
-                        <button class="btn-expand" aria-label="Toggle project details">
-                            <span class="expand-text">View Details</span>
-                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 3: Security Analysis with Nessus -->
-                <div class="project-card magnetic-card" data-accent="orange">
-                    <div class="card-accent-border"></div>
-                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-bug"></i></div>
-                    <div class="project-card-body">
-                        <h3 class="project-title">Security Analysis of Metasploitable 2</h3>
-                        <div class="project-meta">
-                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov–Dec 2025</span>
-                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Air University — Intro to CS</span>
-                        </div>
-                        <div class="project-summary">
-                            <p>Full pentest lab using Kali Linux + Nessus Essentials + Metasploitable 2. Identified and remediated multiple vulnerability categories.</p>
-                        </div>
-                        <div class="project-details">
-                            <ul>
-                                <li>Set up complete penetration testing lab environment</li>
-                                <li>Used Tenable Nessus Essentials for vulnerability scanning</li>
-                                <li>Identified Critical, High, Medium, and Low severity vulnerabilities</li>
-                                <li>Discovered exploitable services: Telnet, VSFTPD 2.3.4, NFS</li>
-                                <li>Ethically exploited vulnerabilities and documented remediation</li>
-                                <li>Verified fixes through re-scanning and validation</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="project-tag">Nessus</span>
-                            <span class="project-tag">Vulnerability Assessment</span>
-                            <span class="project-tag">Linux Security</span>
-                            <span class="project-tag">Ethical Hacking</span>
-                            <span class="project-tag">Remediation</span>
-                        </div>
-                        <button class="btn-expand" aria-label="Toggle project details">
-                            <span class="expand-text">View Details</span>
-                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ===== ADD NEW PROJECT: Copy one .project-card block above and paste here ===== -->
-                <!--
-                <div class="project-card magnetic-card" data-accent="cyan">
-                    <div class="card-accent-border"></div>
-                    <div class="card-watermark" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
-                    <div class="project-card-body">
-                        <h3 class="project-title">Project Title</h3>
-                        <div class="project-meta">
-                            <span class="meta-tag"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Date Range</span>
-                            <span class="meta-tag"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Institution — Course</span>
-                        </div>
-                        <div class="project-summary">
-                            <p>Short summary of the project.</p>
-                        </div>
-                        <div class="project-details">
-                            <ul>
-                                <li>Detail 1</li>
-                                <li>Detail 2</li>
-                            </ul>
-                        </div>
-                        <div class="project-tags">
-                            <span class="project-tag">Skill1</span>
-                            <span class="project-tag">Skill2</span>
-                        </div>
-                        <button class="btn-expand" aria-label="Toggle project details">
-                            <span class="expand-text">View Details</span>
-                            <i class="fa-solid fa-chevron-down expand-icon" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-                -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION: CTF EXPERIENCE ===== -->
-    <section id="ctf" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> ctf --experience"><span class="heading-prompt">&gt; </span>ctf --experience</h2>
-
-            <div class="timeline">
-                <div class="timeline-track">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <span class="timeline-date">2025 – Present</span>
-                            <h4>CTF Player — Team Polyglot</h4>
-                            <p>Alias: Cindrix · Air University E9 Campus, Islamabad</p>
-                            <ul>
-                                <li>Compete regularly in university and national-level CTFs across web exploitation, reverse engineering, cryptography, and binary exploitation</li>
-                                <li>Placed 6th at Hack4Bug 2026, solving reverse-engineering and forensic log-analysis challenges</li>
-                                <li>Solved a ret2win buffer-overflow challenge via a 40-byte offset payload using gdb and pwntools; cleared SQLi labs (incl. a WAF-bypass via XML encoding) on PortSwigger Web Security Academy</li>
-                                <li>Captured flags via SSTI, session-cookie exploitation, and an arbitrary-function-call bug in a FlagYard PHP challenge</li>
-                                <li>Competed in YECTF 2026 and TBCTF (OSINT, forensics, web, crypto, RE); solved OSM-based geolocation challenges with Overpass Turbo and Python/pandas</li>
-                            </ul>
+                    
+                    <div class="flagship-visual-container" aria-hidden="true" data-cursor="hover">
+                        <!-- Abstract CSS mockup for lightweight visualization -->
+                        <div class="abstract-ui-mockup">
+                            <div class="mockup-header">
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                                <div class="url-bar">fractured-signal.au.edu</div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-sidebar"></div>
+                                <div class="mockup-main">
+                                    <div class="mockup-card"></div>
+                                    <div class="mockup-card"></div>
+                                    <div class="mockup-card skeleton"></div>
+                                </div>
+                            </div>
+                            <!-- Overlay glowing signal -->
+                            <svg class="overlay-signal" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0 80 Q 25 20, 50 50 T 100 10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== SECTION: RESEARCH ===== -->
-    <section id="research" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> research --publications"><span class="heading-prompt">&gt; </span>research --publications</h2>
+        <!-- EXPERIENCE (CTF + PROJECTS + RESEARCH) -->
+        <section class="section experience-section" id="experience">
+            <div class="container grid-layout">
+                
+                <div class="col-4 sidebar-sticky gs-reveal">
+                    <span class="kicker">04 // Field Record</span>
+                    <h2>Learning by building, on the record.</h2>
+                    <p class="mt-2 text-muted">A timeline of competitive CTF play, academic projects, and published research.</p>
+                    
+                    <div class="in-progress-box mt-4">
+                        <div class="box-header">
+                            <i class="fa-solid fa-circle-notch fa-spin"></i> <span>Currently In Progress</span>
+                        </div>
+                        <p class="small">10-project self-directed SOC detection portfolio (brute-force, port-scan, reverse-shell detection, log-based IDS, beaconing, SIEM web-attack detection). Also scoping live bug bounty submissions on HackerOne.</p>
+                    </div>
+                </div>
 
-            <div class="timeline">
-                <div class="timeline-track">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <h4>Co-Author — Windows System Resource Exhaustion &amp; Stealth Persistence Attacks</h4>
-                            <p>Supervised by Sheikh Qaisar Ayyub · Co-authors: Wadia Sahar, Hashir Kamal Ahmed</p>
-                            <ul>
-                                <li>Researched and documented Windows persistence and resource-exhaustion attack techniques, informed by a hands-on C++ persistence-mechanism simulator built for coursework</li>
-                            </ul>
+                <div class="col-8 timeline-container">
+                    
+                    <div class="timeline-group gs-reveal">
+                        <h3 class="timeline-group-title">Competitive CTF <span class="text-accent">— Team Polyglot</span></h3>
+                        
+                        <div class="timeline-item highlight" data-cursor="hover">
+                            <div class="item-meta">2026</div>
+                            <div class="item-content">
+                                <h4>6th Place, Hack4Bug 2026</h4>
+                                <p>Solved reverse-engineering and forensic log-analysis challenges.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Exploitation</div>
+                            <div class="item-content">
+                                <h4>ret2win & Binary Exploitation</h4>
+                                <p>Solved a buffer-overflow challenge via a 40-byte offset payload using gdb and pwntools.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Web</div>
+                            <div class="item-content">
+                                <h4>PortSwigger Web Security Academy</h4>
+                                <p>Cleared SQLi labs, including a WAF-bypass via XML encoding.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Web</div>
+                            <div class="item-content">
+                                <h4>FlagYard PHP Challenge</h4>
+                                <p>Captured flags via SSTI, session-cookie exploitation, and an arbitrary-function-call bug.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Mixed</div>
+                            <div class="item-content">
+                                <h4>YECTF 2026 & TBCTF</h4>
+                                <p>OSINT, forensics, web, crypto, and RE — including OSM-based geolocation with Overpass Turbo and Python/pandas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-group gs-reveal mt-5">
+                        <h3 class="timeline-group-title">Research & Projects</h3>
+                        
+                        <div class="timeline-item highlight" data-cursor="hover">
+                            <div class="item-meta">Research</div>
+                            <div class="item-content">
+                                <h4>Windows System Resource Exhaustion & Stealth Persistence Attacks</h4>
+                                <p class="text-accent small mb-1">Co-Author · Supervised by Sheikh Qaisar Ayyub</p>
+                                <p>Researched and documented Windows persistence and resource-exhaustion attack techniques, informed by a hands-on C++ persistence-mechanism simulator built for coursework. Co-authored with Wadia Sahar and Hashir Kamal Ahmed.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Nov – Dec 2025</div>
+                            <div class="item-content">
+                                <h4>Security Analysis of Metasploitable 2 Using Tenable Nessus</h4>
+                                <div class="tag-row small mt-1 mb-1">
+                                    <span class="tag">Kali Linux</span> <span class="tag">Nessus</span>
+                                </div>
+                                <p>Built a full penetration-testing lab and ran vulnerability scans identifying Critical/High/Medium/Low issues, including Telnet, VSFTPD 2.3.4, and NFS misconfigurations. Ethically exploited findings, then applied and verified remediation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Nov – Dec 2025</div>
+                            <div class="item-content">
+                                <h4>Persistence Mechanism Simulator</h4>
+                                <div class="tag-row small mt-1 mb-1">
+                                    <span class="tag">C++ (OOP)</span>
+                                </div>
+                                <p>Built an educational simulator modeling malware persistence — repeated execution, state retention, conditional re-launching — to study attack patterns defensively.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" data-cursor="hover">
+                            <div class="item-meta">Nov – Dec 2025</div>
+                            <div class="item-content">
+                                <h4>ICT Quiz Website</h4>
+                                <div class="tag-row small mt-1 mb-1">
+                                    <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">Vanilla JS</span>
+                                </div>
+                                <p>Shipped a responsive quiz app with 6 timed subject tracks, local-storage history, and dark/light theming, deployed via GitHub Pages CI.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREDENTIALS -->
+        <section class="section credentials-section bg-surface" id="credentials">
+            <div class="container">
+                <div class="section-header gs-reveal">
+                    <span class="kicker">05 // Credentials</span>
+                    <h2>Verified Certifications</h2>
+                </div>
+                
+                <div class="credentials-grid mt-4">
+                    <a href="certificates/google-cybersecurity.pdf" target="_blank" class="cred-card primary gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="cred-icon"><i class="fa-brands fa-google"></i></div>
+                        <div class="cred-info">
+                            <h4>Google Cybersecurity Professional Certificate</h4>
+                            <span class="cred-meta">Google · Coursera (Aug 2026)</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right cred-arrow"></i>
+                    </a>
+
+                    <a href="certificates/iso-27001.pdf" target="_blank" class="cred-card gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="cred-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="cred-info">
+                            <h4>ISO/IEC 27001:2022 Information Security Associate</h4>
+                            <span class="cred-meta">SkillFront (Dec 2025)</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right cred-arrow"></i>
+                    </a>
+
+                    <a href="certificates/thm-hacker-holidays.pdf" target="_blank" class="cred-card gs-reveal gs-stagger" data-cursor="hover">
+                        <div class="cred-icon"><i class="fa-solid fa-bug"></i></div>
+                        <div class="cred-info">
+                            <h4>Hacker Holidays — Completion</h4>
+                            <span class="cred-meta">TryHackMe (Aug 2026)</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right cred-arrow"></i>
+                    </a>
+
+                    <div class="cred-compact-list mt-4 gs-reveal">
+                        <h4 class="text-muted mb-2 text-sm">Additional DataCamp Certifications</h4>
+                        <div class="tag-row">
+                            <a href="certificates/ai-fundamentals.pdf" target="_blank" class="tag" data-cursor="hover">AI Fundamentals</a>
+                            <a href="certificates/intro-python.pdf" target="_blank" class="tag" data-cursor="hover">Python Intro</a>
+                            <a href="certificates/intro-git.pdf" target="_blank" class="tag" data-cursor="hover">Git Intro</a>
+                            <a href="certificates/intermediate-git.pdf" target="_blank" class="tag" data-cursor="hover">Intermediate Git</a>
+                            <a href="certificates/github-concepts.pdf" target="_blank" class="tag" data-cursor="hover">GitHub Concepts</a>
+                            <a href="certificates/github-foundations.pdf" target="_blank" class="tag" data-cursor="hover">GitHub Foundations</a>
+                            <a href="certificates/bash-scripting.pdf" target="_blank" class="tag" data-cursor="hover">Bash Scripting</a>
+                            <a href="certificates/data-literacy.pdf" target="_blank" class="tag" data-cursor="hover">Data Literacy</a>
+                            <a href="certificates/intermediate-chatgpt.pdf" target="_blank" class="tag" data-cursor="hover">Intermediate ChatGPT</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== SECTION: CERTIFICATIONS ===== -->
-    <section id="certifications" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> certifications --verified"><span class="heading-prompt">&gt; </span>certifications --verified</h2>
-
-            <!-- Filter Buttons -->
-            <div class="cert-filters">
-                <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
-                <button class="filter-btn" data-filter="google" id="filter-google">Google</button>
-                <button class="filter-btn" data-filter="datacamp" id="filter-datacamp">DataCamp</button>
-                <button class="filter-btn" data-filter="security" id="filter-security">Security</button>
-            </div>
-
-            <div class="cert-grid" id="cert-grid">
-                <!-- Cert: Google Cybersecurity Professional Certificate -->
-                <div class="cert-card magnetic-card" data-filter="google">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="cert-name">Google Cybersecurity Professional Certificate</h4>
-                    <span class="cert-issuer issuer-google">Google · Coursera</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Aug 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/google-cybersecurity.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-google-cybersecurity">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert: TryHackMe -->
-                <div class="cert-card magnetic-card" data-filter="security">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-user-secret"></i></div>
-                    <h4 class="cert-name">Hacker Holidays — Certificate of Completion</h4>
-                    <span class="cert-issuer issuer-security">TryHackMe</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Aug 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/thm-hacker-holidays.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-thm-hacker-holidays">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 1 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">AI Fundamentals</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/ai-fundamentals.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-ai-fundamentals">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 2 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Data Literacy</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/data-literacy.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-data-literacy">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 3 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">GitHub Foundations</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/github-foundations.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-github-foundations">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 4 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Introduction to GitHub Concepts</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/github-concepts.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-github-concepts">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 5 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Intermediate Git</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/intermediate-git.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intermediate-git">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 6 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Introduction to Git</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/intro-git.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intro-git">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 7 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Introduction to Python</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/intro-python.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intro-python">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 8 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Intermediate ChatGPT</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/intermediate-chatgpt.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-intermediate-chatgpt">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 9 -->
-                <div class="cert-card magnetic-card" data-filter="datacamp">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-certificate"></i></div>
-                    <h4 class="cert-name">Introduction to Bash Scripting</h4>
-                    <span class="cert-issuer issuer-datacamp">DataCamp</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Mar 2026</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/bash-scripting.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-bash-scripting">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- Cert 10 -->
-                <div class="cert-card magnetic-card" data-filter="security">
-                    <div class="cert-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="cert-name">ISO/IEC 27001:2022 Information Security Associate™</h4>
-                    <span class="cert-issuer issuer-security">SkillFront</span>
-                    <span class="cert-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Dec 2025</span>
-                    <span class="cert-verified"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified</span>
-                    <a href="./certificates/iso-27001.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm" id="cert-iso-27001">
-                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Certificate
-                    </a>
-                </div>
-
-                <!-- ===== ADD NEW CERTIFICATION: Copy one .cert-card block above, update name/issuer/date/data-filter/href ===== -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION: CONTACT ===== -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-heading glitch-heading" data-text="> contact --init"><span class="heading-prompt">&gt; </span>contact --init</h2>
-
-            <div class="contact-grid">
-                <div class="contact-card" id="contact-email">
-                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></div>
-                    <h4>Email</h4>
-                    <a href="mailto:hamidrafique2@gmail.com" class="contact-info">hamidrafique2@gmail.com</a>
-                    <button class="copy-btn" data-copy="hamidrafique2@gmail.com" aria-label="Copy email address">
-                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
-                        <span class="copy-tooltip">Copied!</span>
-                    </button>
-                </div>
-                <div class="contact-card" id="contact-phone">
-                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
-                    <h4>Phone</h4>
-                    <a href="tel:+923312224628" class="contact-info">+92 331 222 4628</a>
-                    <button class="copy-btn" data-copy="+923312224628" aria-label="Copy phone number">
-                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
-                        <span class="copy-tooltip">Copied!</span>
-                    </button>
-                </div>
-                <div class="contact-card" id="contact-linkedin">
-                    <div class="contact-icon" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <h4>LinkedIn</h4>
-                    <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="contact-info">linkedin.com/in/hamid-rafique</a>
-                    <button class="copy-btn" data-copy="https://www.linkedin.com/in/hamid-rafique-299006381" aria-label="Copy LinkedIn URL">
-                        <i class="fa-regular fa-copy" aria-hidden="true"></i>
-                        <span class="copy-tooltip">Copied!</span>
-                    </button>
-                </div>
-                <div class="contact-card" id="contact-location">
-                    <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
-                    <h4>Location</h4>
-                    <span class="contact-info">Islamabad, Pakistan</span>
+        <!-- CONTACT -->
+        <section class="section contact-section" id="contact">
+            <div class="container gs-reveal">
+                <div class="contact-box">
+                    <span class="kicker">06 // Connect</span>
+                    <h2>Let's talk about the blue team.</h2>
+                    <p class="mt-2 text-muted max-w-md mx-auto">
+                        Open to SOC analyst, blue team, and internship opportunities — remote or on-site. If you're building a detection program or just want to talk CTF strategy, reach out.
+                    </p>
+                    
+                    <div class="contact-links mt-4">
+                        <a href="mailto:hamidrafique2@gmail.com" class="contact-link" data-cursor="hover">
+                            <i class="fa-solid fa-envelope"></i> hamidrafique2@gmail.com
+                        </a>
+                        <a href="tel:+923312224628" class="contact-link" data-cursor="hover">
+                            <i class="fa-solid fa-phone"></i> +92 331 222 4628
+                        </a>
+                        <a href="https://linkedin.com/in/hamid-rafique-299006381" target="_blank" class="contact-link" data-cursor="hover">
+                            <i class="fa-brands fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/hamidrafique2-boop" target="_blank" class="contact-link" data-cursor="hover">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
             </div>
-
-            <div class="contact-socials">
-                <a href="https://github.com/hamidrafique2-boop" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub profile" id="social-github">
-                    <i class="fa-brands fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/hamid-rafique-299006381" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn profile" id="social-linkedin">
-                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:hamidrafique2@gmail.com" class="social-btn" aria-label="Send email" id="social-email">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
+        </section>
     </main>
 
-    <!-- ===== SECTION: FOOTER ===== -->
-    <footer id="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p><span id="copyright-year"></span></p>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <span class="brand-text">H.Rafique</span>
+                <p class="text-sm text-muted mt-1">Building toward the blue team, one detection at a time.</p>
             </div>
-            <div class="footer-center">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#ctf">CTF</a>
-                <a href="#certifications">Certs</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-right">
-                <p>"Built with passion. Secured with knowledge."</p>
+            <div class="footer-copy">
+                <p class="text-sm text-muted">&copy; <span id="year"></span> Hamid Rafique. Built with intent, not a template.</p>
             </div>
         </div>
     </footer>
-
-    <!-- ===== BACK TO TOP BUTTON ===== -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-    </button>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
 </body>
 </html>
